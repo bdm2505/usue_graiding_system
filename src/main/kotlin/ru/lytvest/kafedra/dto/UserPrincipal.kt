@@ -5,9 +5,13 @@ import org.springframework.security.core.userdetails.UserDetails
 import ru.lytvest.kafedra.entity.User
 
 class UserPrincipal(
-    val user: User
+
 ) : UserDetails {
-    val roles = user.roles.split(",").map { Role(it) }.toMutableList()
+    lateinit var user: User
+    val roles: MutableList<Role> by lazy { user.roles.split(",").map { Role(it) }.toMutableList() }
+    val fio: String by lazy { user.fio }
+
+    fun isAdmin() = roles.contains(Role("ADMIN"))
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> = roles
 
     override fun getPassword(): String = user.password

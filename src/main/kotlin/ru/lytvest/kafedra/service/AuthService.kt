@@ -20,10 +20,12 @@ class AuthService(
 
     @PostConstruct
     fun init() {
+
         User().apply {
             username = "user"
             password = passwordEncoder.encode("1234")
             confirmed = true
+            roles = "USER"
             userRepository.findByUsername(username) ?: run {
                 userRepository.save(this)
             }
@@ -31,7 +33,7 @@ class AuthService(
         User().apply {
             username = "admin"
             password = passwordEncoder.encode("1234")
-            roles = "USER,ADMIN"
+            roles = "ADMIN"
             confirmed = true
             userRepository.findByUsername(username) ?: run {
                 userRepository.save(this)
@@ -42,24 +44,25 @@ class AuthService(
     override fun loadUserByUsername(username: String): UserDetails {
         log.info { "fing by $username" }
         return userRepository.findByUsername(username)?.let {
-            UserPrincipal(it)
+            UserPrincipal().apply { user = it }
         } ?: throw Exception("Пользователь не найден")
     }
 
 
     fun registerUser(username: String, password: String, fio: String?): UserDetails? {
         log.info { "register user: $username" }
-        return userRepository.findByUsername(username)?.let {
-            null
-        } ?: run {
-            User().let {
-                it.username = username
-                it.password = passwordEncoder.encode(password)
-                it.fio = fio ?: ""
-                it.confirmed = true
-                UserPrincipal(userRepository.save(it))
-            }
+        val user1 = userRepository.findByUsername(username)
+        if (user1 != null)
+            return null
+
+        return User().let {
+            it.username = username
+            it.password = passwordEncoder.encode(password)
+            it.fio = fio ?: ""
+            it.confirmed = true
+            UserPrincipal().apply { user = userRepository.save(it) }
         }
+
     }
 
 
