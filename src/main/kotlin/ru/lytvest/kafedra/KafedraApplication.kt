@@ -68,6 +68,7 @@ class KafedraApplication() {
 		http.csrf().disable()
 			.authorizeHttpRequests { auth ->
 				auth.requestMatchers("/login*").permitAll()
+				auth.requestMatchers("/static/**").permitAll()
 					.anyRequest().authenticated()
 			}
 			.formLogin().apply {
