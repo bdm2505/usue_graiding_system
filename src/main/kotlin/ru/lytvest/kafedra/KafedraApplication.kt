@@ -89,4 +89,6 @@ class KafedraApplication() {
 
 fun main(args: Array<String>) {
 	runApplication<KafedraApplication>(*args)
+
+	println("Server start on address: http://localhost:8080/")
 }

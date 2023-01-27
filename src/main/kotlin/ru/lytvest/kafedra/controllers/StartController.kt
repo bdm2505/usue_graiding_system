@@ -8,6 +8,7 @@ class StartController {
 
     @GetMapping("/")
     fun index(): String {
+        println(">>>>")
         return "index"
     }
 }
