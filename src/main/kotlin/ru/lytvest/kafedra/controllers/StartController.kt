@@ -13,7 +13,7 @@ class StartController {
         model: Model,
         authentication: Authentication?
     ): String {
-        println(">>>>")
+        println(authentication)
         model.addUserData(authentication)
         return "index"
     }

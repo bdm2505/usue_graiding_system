@@ -22,7 +22,7 @@ class AuthConfig {
 
             .csrf().disable()
             .authorizeHttpRequests { auth ->
-                auth.requestMatchers("/login**", "/static/**").permitAll()
+                auth.requestMatchers("/login**", "/static/**") .permitAll()
 //				.requestMatchers("/login_auth").permitAll()
                     .anyRequest().authenticated()
             }
@@ -42,6 +42,8 @@ class AuthConfig {
 //                remember
 //                    .rememberMeServices(rememberMeServices)
 //            }
+
+        http.headers().frameOptions().disable()
         return http.build()
     }
 

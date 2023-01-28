@@ -39,6 +39,26 @@ class AuthService(
                 userRepository.save(this)
             }
         }
+        User().apply {
+            username = "tomskih"
+            password = passwordEncoder.encode("1234")
+            roles = "USER"
+            fio = "Тайвин Ланистер"
+            confirmed = true
+            userRepository.findByUsername(username) ?: run {
+                userRepository.save(this)
+            }
+        }
+        User().apply {
+            username = "nastya59"
+            password = passwordEncoder.encode("1234")
+            roles = "ADMIN"
+            fio = "Иванов Иван Иванович"
+            confirmed = true
+            userRepository.findByUsername(username) ?: run {
+                userRepository.save(this)
+            }
+        }
     }
 
     override fun loadUserByUsername(username: String): UserDetails {

@@ -1,14 +1,202 @@
-{{>header}}
-{{#admin}}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link type="text/css" href="/static/styles/main-styles.css">
+
+    <style>
+
+        .pageBody {
+            margin-top: 50px;
+            border-radius: 5px;
+            background-color: #242328;
+            min-height: 1000px;
+            padding: 25px 50px 50px 50px;
+        }
+
+        .card {
+            color: white;
+            min-height: 150px;
+            min-width: 150px;
+            max-height: 240px;
+            max-width: 240px;
+        }
+    </style>
+
+</head>
+<body style="background-color: #2b2532;">
 <div class="container">
-    вы зашли под админом!
-    <a class="btn outline-primary-btn" href="/register">register</a>
+
+    {{>header}}
+
+    <div class="text-white fs-1 text-center" style="display: table; margin: 0 auto; margin-top: 25px;">
+        {{#admin}}
+        <div class="container">
+            Администратор {{fio}}, добро пожаловать!
+        </div>
+        {{/admin}}
+        {{^admin}}
+        <div class="container">
+            Добрый день, {{fio}}!
+        </div>
+        {{/admin}}
+
+    </div>
+    <div class="container pageBody">
+
+        <div class="text-white fs-2 mb-5" style="display: table; margin: 0 auto;">Выберите группу</div>
+
+        <form method="GET" style="margin-bottom: 30px;">
+            <div class="input-group mb-3 border-0" style="max-width: 550px; margin: 0 auto;">
+            <span class="input-group-text border-0 text-white text-wrap" id="inputGroup-sizing-default"
+                  style="background-color: #545453; max-width: 80px;">Поиск группы
+            </span>
+                <input name="username" style="background-color: #38373A;" type="text"
+                       class="form-control border-0 text-white" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default">
+
+                <div class="input-group-text border-0" style="background-color: #545453; width: 60px;">
+                    <button class="btn btn-outline-secondary text-white border-0" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row" style="margin-left: 50px; margin-right: 50px;">
+            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>            <div class="col col-lg-4" style="margin-bottom: 25px;">
+                <div class="card" style="background-color: #4C4B4E;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="margin-top: 20%;">ИВТ-20-1</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
-{{/admin}}
-{{^admin}}
-<div class="container">
-    вы зашли под user!
-</div>
-{{/admin}}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
 <div class="container">sdfsdfsdfsdfsd</div>
 {{>foother}}
