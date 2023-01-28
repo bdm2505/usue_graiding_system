@@ -9,7 +9,7 @@ class UserPrincipal(
 ) : UserDetails {
     lateinit var user: User
     val roles: MutableList<Role> by lazy { user.roles.split(",").map { Role(it) }.toMutableList() }
-    val fio: String by lazy { user.fio }
+    val fio: String by lazy { user.fio.toString() }
 
     fun isAdmin() = roles.contains(Role("ADMIN"))
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> = roles
