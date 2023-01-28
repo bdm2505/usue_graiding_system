@@ -13,8 +13,7 @@ class StartController {
         model: Model,
         authentication: Authentication?
     ): String {
-        println(authentication)
         model.addUserData(authentication)
-        return "index"
+        return "redirect:/groups"
     }
 }

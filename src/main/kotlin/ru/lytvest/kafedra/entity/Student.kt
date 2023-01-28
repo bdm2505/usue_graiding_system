@@ -23,6 +23,6 @@ class Student {
     fun fio(): String =
         "$lastName $firstName $patronymic"
 
-    fun toDto() = StudentDto(fio())
+    fun toDto() = StudentDto(id!!, fio())
 
 }

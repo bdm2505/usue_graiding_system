@@ -1,16 +1,36 @@
 package ru.lytvest.kafedra.service
 
+import jakarta.annotation.PostConstruct
+import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import ru.lytvest.kafedra.dto.GroupDto
 import ru.lytvest.kafedra.dto.StudentDto
 import ru.lytvest.kafedra.entity.Exam
 import ru.lytvest.kafedra.entity.Group
+import ru.lytvest.kafedra.entity.Student
 import ru.lytvest.kafedra.repository.GroupRepository
 
 @Service
 class GroupService(
     val groupRepository: GroupRepository
 ) {
+    val log = KotlinLogging.logger {}
+
+    @PostConstruct
+    fun init() {
+        for (i in 13..21)
+            for (j in 1..4) {
+                try {
+                    addGroup("ИВТ-$i-$j").apply {
+                        students.add(Student().apply { firstName = "Дмитрий" })
+                        students.add(Student().apply { firstName = "Дмитрий Михалыч" })
+                        groupRepository.save(this)
+                    }
+                } catch (e: Exception) {
+                    log.error(e.message)
+                }
+            }
+    }
 
     fun groups(exam: Exam? = null): List<GroupDto> {
         if (exam == null)

@@ -1,0 +1,43 @@
+{{>header}}
+
+<style>
+    .my:hover {
+        background-color: #BABABA;
+    }
+</style>
+
+{{#current_group}}
+
+<div class="container m-2">
+
+    <div class="alert alert-primary" role="alert">
+        Текущая группа : {{current_group}}
+    </div>
+
+</div>
+<div class="container m-2">
+    <!--    <div class="card" style="">-->
+    <ul class="list-group list-group-flush">
+        {{#students}}
+        <a class="nav-link " href="/quest?student={{name}}">
+            <li class="list-group-item my">{{name}}</li>
+        </a>
+        {{/students}}
+    </ul>
+    <!--    </div>-->
+</div>
+{{/current_group}}
+
+<div class="container m-2">
+    <!--    <div class="card" style="">-->
+    <ul class="list-group list-group-flush">
+        {{#groups}}
+        <a class="nav-link " href="/groups?group={{name}}">
+            <li class="list-group-item my">{{name}}</li>
+        </a>
+        {{/groups}}
+    </ul>
+    <!--    </div>-->
+</div>
+
+{{>foother}}

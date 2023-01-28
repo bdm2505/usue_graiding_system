@@ -6,6 +6,7 @@ import java.time.LocalDate
 
 @Entity
 @Table(
+    name = "group_data",
     uniqueConstraints = [UniqueConstraint(columnNames = ["name"])]
 )
 class Group {
@@ -22,6 +23,6 @@ class Group {
     @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     var students: MutableList<Student> = mutableListOf()
 
-    fun toDto() = GroupDto(name)
+    fun toDto() = GroupDto(id!!, name)
 
 }
