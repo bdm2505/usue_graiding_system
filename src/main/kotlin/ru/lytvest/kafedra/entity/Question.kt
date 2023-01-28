@@ -10,4 +10,6 @@ class Question {
 
     @Column(length = 1000)
     var text: String = ""
+
+    var deleted: Boolean = false
 }

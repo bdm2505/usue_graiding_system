@@ -16,7 +16,7 @@ class Exam {
     var date: LocalDate = LocalDate.now()
 
     @OneToMany(fetch = FetchType.LAZY)
-    var examiners: MutableList<User> = mutableListOf()
+    var examiners: MutableList<Examiner> = mutableListOf()
 
     @OneToMany(fetch = FetchType.LAZY)
     var groups: MutableList<Group> = mutableListOf()

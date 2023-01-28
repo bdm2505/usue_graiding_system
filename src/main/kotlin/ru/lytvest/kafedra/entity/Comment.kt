@@ -17,7 +17,7 @@ class Comment {
     var dateTime: LocalDateTime = LocalDateTime.now()
 
     @ManyToOne
-    lateinit var examiner: User
+    lateinit var examiner: Examiner
 
     @ManyToOne
     lateinit var exam: Exam
@@ -25,9 +25,10 @@ class Comment {
     @ManyToOne
     lateinit var student: Student
 
+
     fun toDto(): CommentDto = CommentDto(
         text,
-        examiner.fio ?: examiner.username,
+        examiner.fio(),
         student.fio(),
         exam.name,
         dateTime.toString() // TODO

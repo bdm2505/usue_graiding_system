@@ -11,7 +11,7 @@ class AnswerQuestion {
     var id: Long? = null
 
     @ManyToOne
-    lateinit var examiner: User
+    lateinit var examiner: Examiner
 
     @ManyToOne
     lateinit var student: Student

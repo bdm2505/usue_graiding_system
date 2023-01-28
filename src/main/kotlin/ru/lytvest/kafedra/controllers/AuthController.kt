@@ -2,12 +2,10 @@ package ru.lytvest.kafedra.controllers
 
 
 import mu.KotlinLogging
-import org.springframework.security.access.annotation.Secured
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import ru.lytvest.kafedra.dto.UserPrincipal
 import ru.lytvest.kafedra.service.AuthService
@@ -27,30 +25,30 @@ class AuthController(
     }
 
 
-    @Secured("ADMIN")
-    @PostMapping("/register_form")
-    fun registerForm(
-        @RequestParam username: String,
-        @RequestParam password: String,
-        @RequestParam fio: String?,
-        model: Model,
-        authentication: Authentication?
-    ): String {
-        val user = authService.registerUser(username, password, fio)
-        model.addAttribute("registerSuccess", user != null)
-        model.addUserData(authentication)
-        return "register_form"
-    }
-
-    @Secured("ADMIN")
-    @GetMapping("/register")
-    fun register(
-        model: Model,
-        authentication: Authentication?
-    ): String {
-        model.addUserData(authentication)
-        return "register"
-    }
+//    @Secured("ADMIN")
+//    @PostMapping("/register_form")
+//    fun registerForm(
+//        @RequestParam username: String,
+//        @RequestParam password: String,
+//        @RequestParam fio: String?,
+//        model: Model,
+//        authentication: Authentication?
+//    ): String {
+//        val user = authService.registerUser(username, password, fio)
+//        model.addAttribute("registerSuccess", user != null)
+//        model.addUserData(authentication)
+//        return "register_form"
+//    }
+//
+//    @Secured("ADMIN")
+//    @GetMapping("/register")
+//    fun register(
+//        model: Model,
+//        authentication: Authentication?
+//    ): String {
+//        model.addUserData(authentication)
+//        return "register"
+//    }
 }
 
 fun Model.addUserData(authentication: Authentication?) {

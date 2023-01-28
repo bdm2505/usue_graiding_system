@@ -6,14 +6,19 @@ import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
+import ru.lytvest.kafedra.Utils
 import ru.lytvest.kafedra.dto.UserPrincipal
+import ru.lytvest.kafedra.entity.Examiner
 import ru.lytvest.kafedra.entity.User
+import ru.lytvest.kafedra.repository.ExaminerRepository
 import ru.lytvest.kafedra.repository.UserRepository
+import java.util.*
 
 @Service
 class AuthService(
     val userRepository: UserRepository,
-    val passwordEncoder: PasswordEncoder
+    val passwordEncoder: PasswordEncoder,
+    val examinerRepository: ExaminerRepository
 
 ) : UserDetailsService {
     val log = KotlinLogging.logger {}
@@ -49,21 +54,37 @@ class AuthService(
     }
 
 
-    fun registerUser(username: String, password: String, fio: String?): UserDetails? {
-        log.info { "register user: $username" }
-        val user1 = userRepository.findByUsername(username)
-        if (user1 != null)
-            return null
+//    fun registerUser(username: String, password: String, fio: String?): UserDetails? {
+//        log.info { "register user: $username" }
+//        val user1 = userRepository.findByUsername(username)
+//        if (user1 != null)
+//            return null
+//
+//        return User().let {
+//            it.username = username
+//            it.password = passwordEncoder.encode(password)
+//            it.fio = fio ?: ""
+//            it.confirmed = true
+//            UserPrincipal().apply { user = userRepository.save(it) }
+//        }
+//    }
 
-        return User().let {
-            it.username = username
-            it.password = passwordEncoder.encode(password)
-            it.fio = fio ?: ""
-            it.confirmed = true
+    fun registerExaminer(login: String, fio: String, password: String? = null): Examiner {
+        User().let {
+            it.username = login
+            it.password = passwordEncoder.encode(password ?: UUID.randomUUID().toString())
+            it.fio = fio
+            it.confirmed = password != null
             UserPrincipal().apply { user = userRepository.save(it) }
         }
-
+        val f = Utils.toFio(fio)
+        return Examiner().apply {
+            this.login = login
+            firstName = f.first
+            lastName = f.last
+            patronymic = f.pat
+            examinerRepository.save(this)
+        }
     }
-
 
 }

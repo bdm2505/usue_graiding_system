@@ -1,6 +1,7 @@
 package ru.lytvest.kafedra.entity
 
 import jakarta.persistence.*
+import ru.lytvest.kafedra.dto.GroupDto
 import java.time.LocalDate
 
 @Entity
@@ -18,7 +19,9 @@ class Group {
 
     val date: LocalDate = LocalDate.now()
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     var students: MutableList<Student> = mutableListOf()
+
+    fun toDto() = GroupDto(name)
 
 }
