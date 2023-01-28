@@ -15,7 +15,7 @@ class User {
     @Column(nullable = false, unique = true)
     var username: String = ""
     var password: String = ""
-    var fio = ""
+    var fio: String? = null
     var roles = "USER"
     var locked = false
     var confirmed = false
