@@ -1,6 +1,7 @@
 package ru.lytvest.kafedra.entity
 
 import jakarta.persistence.*
+import ru.lytvest.kafedra.dto.QuestionDto
 
 @Entity
 class Question {
@@ -12,4 +13,6 @@ class Question {
     var text: String = ""
 
     var deleted: Boolean = false
+
+    fun toDto() = QuestionDto(id!!, text)
 }

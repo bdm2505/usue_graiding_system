@@ -1,12 +1,31 @@
 package ru.lytvest.kafedra.service
 
+import jakarta.annotation.PostConstruct
 import jakarta.servlet.http.HttpSession
 import org.springframework.stereotype.Service
+import ru.lytvest.kafedra.dto.QuestionDto
 import ru.lytvest.kafedra.entity.*
 import ru.lytvest.kafedra.repository.CommentRepository
+import ru.lytvest.kafedra.repository.QuestionRepository
 
 @Service
-class QuestionService(val commentRepository: CommentRepository, val session: HttpSession) {
+class QuestionService(
+    val commentRepository: CommentRepository,
+    val session: HttpSession,
+    val questionRepository: QuestionRepository
+) {
+
+    @PostConstruct
+    fun init() {
+
+        for (i in 1..10) {
+            Question().apply {
+                text =
+                    "Вопрос $i о том как надо жарить рыбу (1 до 10)" + "Вопрос $i о том как надо жарить рыбу (1 до 10)" + "Вопрос $i о том как надо жарить рыбу (1 до 10)"
+                questionRepository.save(this)
+            }
+        }
+    }
 
     fun addComment(text: String, examiner: Examiner, exam: Exam, student: Student): Comment {
         return Comment().let {
@@ -28,5 +47,9 @@ class QuestionService(val commentRepository: CommentRepository, val session: Htt
     fun comments(exam: Exam, student: Student? = null, user: User? = null): List<Comment> {
         // TODO
         return listOf()
+    }
+
+    fun allQuestions(): List<QuestionDto> {
+        return questionRepository.findAllByDeleted(false).map { it.toDto() }
     }
 }
