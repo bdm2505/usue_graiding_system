@@ -8,39 +8,36 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/static/styles/main-styles.css">
 </head>
-<body style="background: #2b2532;">
+<body>
+
 
 <div class="parent">
     <div class="inner">
         <form action="/login_auth" method="POST">
             <div class="block">
-                <div class="card text-white w-75" style="background: #4C4B4E; margin: 0 auto;">
-                    <img src="/static/images/u.png" class="w-25" style="margin: 0 auto; margin-top: 25px;">
-                    <div class="card-body">
-                        <h4 class="card-title">Авторизация</h4>
+                <div class="card border-0" style="margin: 0 auto; min-width: 400px; ">
+                    <img src="static/images/logo.png" class="w-25" style="margin: 0 auto; margin-top: 25px; min-width: 250px; ">
+                    <div class="card-body w-75" style="margin: 0 auto;  max-width: 400px;">
 
                         <div style="margin-top: 20px;">
-                            <div class="input-group mb-3" style="border: 0;">
-                                <span class="input-group-text no-border text-white w-25" id="inputGroup-sizing-default"
-                                      style="background-color: #545453;">Логин</span>
-                                <input name="username" style="background-color: #38373A;" type="text"
-                                       class="form-control no-border text-white" aria-label="Sizing example input"
-                                       aria-describedby="inputGroup-sizing-default">
+
+                            <div class="input-group mb-3" style="margin: 0 auto; width: 100%;">
+                                <input name="username" type="text" class="form-control" placeholder="Логин">
                             </div>
 
-                            <div class="input-group mb-3" style="border: 0;">
-                                <span class="input-group-text no-border text-white" id="inputGroup-sizing-default"
-                                      style="background-color: #545453;">Пароль</span>
-                                <input name="password" style="background-color: #38373A;" type="password"
-                                       class="form-control no-border text-white" aria-label="Sizing example input"
-                                       aria-describedby="inputGroup-sizing-default">
+                            <div class="input-group mb-3" style="margin: 0 auto; width: 100%;">
+                                <input name="password" type="password" class="form-control" placeholder="Пароль">
                             </div>
+
                         </div>
                         {{#error}}
-                            <div class="mt-2 mb-2">Неправильный логин или пароль</div>
+                        <div class="mt-2 mb-2"><b>Неправильный логин или пароль!</b></div>
                         {{/error}}
-                        <button type="submit" class="btn btn-info text-white fs-5" style="min-width: 125px;">Войти
-                        </button>
+                        <div style="width: 100%;">
+                            <button type="submit" class="btn fs-5 text-white" style="width: 100%; background-color: #0060AA;">
+                                <b>Вход</b>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
