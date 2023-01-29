@@ -3,9 +3,9 @@
 {{#current_group}}
 <div class="container m-2">
 
-    <div class="alert alert-primary" role="alert">
+    <div class="alert alert-primary" style="background-color: #C3DAFF" role="alert">
 
-        Текущая группа : {{current_group}}
+        <b>Текущая группа : {{current_group}}</b>
     </div>
 
 </div>
@@ -48,7 +48,7 @@
 
         {{#students}}
         <a class="nav-link " href="/questions?studentId={{id}}">
-            <li class="list-group-item hover-gray">{{name}}</li>
+            <li class="list-group-item hover-blue">{{name}}</li>
         </a>
         {{/students}}
 
@@ -64,7 +64,7 @@
 
         {{#groups}}
         <a class="nav-link " href="/groups?group={{name}}">
-            <li class="list-group-item hover-gray">{{name}}</li>
+            <li class="list-group-item hover-blue">{{name}}</li>
         </a>
         {{/groups}}
 
