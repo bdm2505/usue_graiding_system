@@ -24,3 +24,11 @@
 html * {
     font-family: "Open Sans", serif !important;
 }
+
+.hover-blue:hover {
+    background-color: #AEC5EB;
+}
+
+.hover-gray:hover {
+    background-color: #BABABA;
+}

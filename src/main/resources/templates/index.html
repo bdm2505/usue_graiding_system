@@ -1,43 +1,69 @@
 {{>header}}
 
-<style>
-    .my:hover {
-        background-color: #BABABA;
-    }
-</style>
-
 {{#current_group}}
-
 <div class="container m-2">
 
     <div class="alert alert-primary" role="alert">
+
         Текущая группа : {{current_group}}
     </div>
 
 </div>
+{{/current_group}}
+
+<form>
+
+    <div class="container m-2 input-group mb-3 mt-3" style="margin: 0 auto;">
+
+        {{#current_group}}
+        <input type="hidden" name="group" value="{{current_group}}">
+        {{/current_group}}
+
+        <input name="targetName" type="text" class="form-control" placeholder="Введите название"
+               value="{{#targetName}}{{targetName}}{{/targetName}}{{^targetName}}{{/targetName}}"
+        >
+
+        <button class="btn btn-outline-secondary border-0 hover-blue" type="submit">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+
+        </button>
+
+    </div>
+
+</form>
+{{#current_group}}
 <div class="container m-2">
-    <!--    <div class="card" style="">-->
-    <ul class="list-group list-group-flush">
+
+    <ul class="list-group list-group-flush mb-3">
+
         {{#students}}
         <a class="nav-link " href="/questions?studentId={{id}}">
-            <li class="list-group-item my">{{name}}</li>
+            <li class="list-group-item hover-gray">{{name}}</li>
         </a>
         {{/students}}
+
     </ul>
-    <!--    </div>-->
+
+    <a class="btn btn-danger" href="/">Назад</a>
 </div>
 {{/current_group}}
 
 <div class="container m-2">
-    <!--    <div class="card" style="">-->
-    <ul class="list-group list-group-flush">
+
+    <ul class="list-group list-group-flush mb-3">
+
         {{#groups}}
         <a class="nav-link " href="/groups?group={{name}}">
-            <li class="list-group-item my">{{name}}</li>
+            <li class="list-group-item hover-gray">{{name}}</li>
         </a>
         {{/groups}}
+
     </ul>
-    <!--    </div>-->
+
 </div>
 
 {{>foother}}

@@ -39,9 +39,14 @@ class GroupService(
         return exam.groups.map { it.toDto() }
     }
 
-    fun studentsByGroup(name: String): List<StudentDto> {
+    fun groupsByName(name: String): List<GroupDto> {
+        return groupRepository.findAllByNameContainingIgnoreCase(name).map { it.toDto() };
+    }
+
+    fun studentsByGroup(name: String, studentName: String): List<StudentDto> {
+
         return groupRepository.findByName(name)?.let { group ->
-            group.students.map { it.toDto() }
+            group.students.filter { it.fio().contains(studentName, ignoreCase = true) }.map { it.toDto() }
         } ?: listOf()
     }
 

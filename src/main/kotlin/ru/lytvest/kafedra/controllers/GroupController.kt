@@ -19,18 +19,31 @@ class GroupController(
     fun groups(
         model: Model,
         authentication: Authentication?,
-        @RequestParam group: String?
+        @RequestParam group: String?,
+        @RequestParam targetName: String?
     ): String {
         model.addUserData(authentication)
-        model.addAttribute("groups", groupService.groups())
+
         if (group != null) {
-            val students = groupService.studentsByGroup(group)
+
+            println("targetName " + targetName)
+            println("group " + group)
+
+            val students = groupService.studentsByGroup(group, targetName ?: "")
             if (students.isNotEmpty()) {
                 model.addAttribute("current_group", group)
                 model.addAttribute("students", students)
             }
         }
+        else {
+            model.addAttribute("groups", groupService.groupsByName(targetName ?: ""))
+        }
+
+        model.addAttribute("targetName", targetName)
+        model.addAttribute("showBlock", targetName != null || group != null)
+
         log.info { model }
+
         return "index"
     }
 }
