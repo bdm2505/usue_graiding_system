@@ -97,12 +97,10 @@ class AuthService(
             it.confirmed = password != null
             UserPrincipal().apply { user = userRepository.save(it) }
         }
-        val f = Utils.toFio(fio)
+
         return Examiner().apply {
             this.login = login
-            firstName = f.first
-            lastName = f.last
-            patronymic = f.pat
+            this.fio = fio
             examinerRepository.save(this)
         }
     }

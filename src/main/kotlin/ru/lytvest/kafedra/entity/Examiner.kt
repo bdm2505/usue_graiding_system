@@ -14,13 +14,7 @@ class Examiner {
     var id: Long? = null
 
     var login: String = ""
-    var firstName: String = ""
-    var lastName: String = ""
-    var patronymic: String = ""
+    var fio: String = ""
 
     var dateRegister: LocalDate = LocalDate.now()
-
-
-    fun fio(): String =
-        "$lastName $firstName $patronymic"
 }

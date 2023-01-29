@@ -13,8 +13,10 @@
 
 <form>
 
-    <div class="container m-2 input-group mb-3 mt-3" style="margin: 0 auto;">
+    <div class="container m-2 input-group mb-3 mt-3" style="margin: 0 auto; align-items: center;">
 
+
+        <div class="me-2">ФИО: </div>
         {{#current_group}}
         <input type="hidden" name="group" value="{{current_group}}">
         {{/current_group}}
@@ -31,8 +33,12 @@
             </svg>
 
         </button>
+        <br>
+        <div style="font-size: 12px; width: 100%;">Найдено результатов: {{resultsCount}}</div>
 
     </div>
+
+
 
 </form>
 {{#current_group}}

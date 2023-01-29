@@ -26,17 +26,19 @@ class GroupController(
 
         if (group != null) {
 
-            println("targetName " + targetName)
-            println("group " + group)
-
             val students = groupService.studentsByGroup(group, targetName ?: "")
             if (students.isNotEmpty()) {
                 model.addAttribute("current_group", group)
                 model.addAttribute("students", students)
+                model.addAttribute("resultsCount", students.size)
             }
         }
         else {
-            model.addAttribute("groups", groupService.groupsByName(targetName ?: ""))
+
+            val groups = groupService.groupsByName(targetName ?: "")
+
+            model.addAttribute("groups", groups)
+            model.addAttribute("resultsCount", groups.size)
         }
 
         model.addAttribute("targetName", targetName)

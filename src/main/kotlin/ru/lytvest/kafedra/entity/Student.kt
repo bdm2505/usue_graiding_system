@@ -11,18 +11,13 @@ class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = null
 
-    var firstName: String = ""
-    var lastName: String = ""
-    var patronymic: String = ""
+    var fio: String = ""
 
     var dateRegister: LocalDate = LocalDate.now()
 
     @ManyToOne
     lateinit var group: Group
 
-    fun fio(): String =
-        "$lastName $firstName $patronymic"
-
-    fun toDto() = StudentDto(id!!, fio())
+    fun toDto() = StudentDto(id!!, fio)
 
 }

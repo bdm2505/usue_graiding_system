@@ -22,8 +22,8 @@ class GroupService(
             for (j in 1..4) {
                 try {
                     addGroup("ИВТ-$i-$j").apply {
-                        students.add(Student().apply { firstName = "Дмитрий" })
-                        students.add(Student().apply { firstName = "Дмитрий Михалыч" })
+                        students.add(Student().apply { fio = "Дмитрий" })
+                        students.add(Student().apply { fio = "Дмитрий Михалыч" })
                         groupRepository.save(this)
                     }
                 } catch (e: Exception) {
@@ -46,7 +46,7 @@ class GroupService(
     fun studentsByGroup(name: String, studentName: String): List<StudentDto> {
 
         return groupRepository.findByName(name)?.let { group ->
-            group.students.filter { it.fio().contains(studentName, ignoreCase = true) }.map { it.toDto() }
+            group.students.filter { it.fio.contains(studentName, ignoreCase = true) }.map { it.toDto() }
         } ?: listOf()
     }
 

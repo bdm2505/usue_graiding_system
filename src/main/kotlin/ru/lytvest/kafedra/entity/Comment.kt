@@ -28,8 +28,8 @@ class Comment {
 
     fun toDto(): CommentDto = CommentDto(
         text,
-        examiner.fio(),
-        student.fio(),
+        examiner.fio,
+        student.fio,
         exam.name,
         dateTime.toString() // TODO
     )
