@@ -22,5 +22,5 @@
 }
 
 html * {
-    font-family: "Open Sans";
+    font-family: "Open Sans" !important;
 }

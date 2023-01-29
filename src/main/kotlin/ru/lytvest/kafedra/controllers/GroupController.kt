@@ -31,6 +31,6 @@ class GroupController(
             }
         }
         log.info { model }
-        return "index_my"
+        return "index"
     }
 }
