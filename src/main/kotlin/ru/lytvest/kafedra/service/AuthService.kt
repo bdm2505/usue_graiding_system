@@ -67,7 +67,7 @@ class AuthService(
     }
 
     override fun loadUserByUsername(username: String): UserDetails {
-        log.info { "fing by $username" }
+        log.info { "find by $username" }
         return userRepository.findByUsername(username)?.let {
             UserPrincipal().apply { user = it }
         } ?: throw Exception("Пользователь не найден")
