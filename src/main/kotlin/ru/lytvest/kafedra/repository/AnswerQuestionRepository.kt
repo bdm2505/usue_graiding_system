@@ -1,9 +1,9 @@
 package ru.lytvest.kafedra.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
-import ru.lytvest.kafedra.entity.Comment
+import ru.lytvest.kafedra.entity.AnswerQuestion
 
-interface AnswerQuestionRepository : JpaRepository<Comment, Long> {
+interface AnswerQuestionRepository : JpaRepository<AnswerQuestion, Long> {
 
 
 }

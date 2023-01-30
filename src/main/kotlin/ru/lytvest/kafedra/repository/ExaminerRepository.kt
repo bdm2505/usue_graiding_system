@@ -5,5 +5,5 @@ import ru.lytvest.kafedra.entity.Examiner
 
 interface ExaminerRepository : JpaRepository<Examiner, Long> {
 
-
+    fun findByLogin(login: String): Examiner?
 }

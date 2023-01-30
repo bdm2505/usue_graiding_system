@@ -1,6 +1,11 @@
 package ru.lytvest.kafedra.entity
 
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
+import jakarta.persistence.ManyToOne
 import ru.lytvest.kafedra.dto.CommentDto
 import java.time.LocalDateTime
 
@@ -20,7 +25,7 @@ class Comment {
     lateinit var examiner: Examiner
 
     @ManyToOne
-    lateinit var exam: Exam
+    var exam: Exam? = null
 
     @ManyToOne
     lateinit var student: Student
@@ -30,7 +35,7 @@ class Comment {
         text,
         examiner.fio,
         student.fio,
-        exam.name,
+        exam?.name ?: "Нет имени экзамена",
         dateTime.toString() // TODO
     )
 }

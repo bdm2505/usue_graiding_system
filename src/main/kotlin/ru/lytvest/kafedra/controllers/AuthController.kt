@@ -57,6 +57,7 @@ fun Model.addUserData(authentication: Authentication?) {
         addAttribute("username", auth.name)
         val user = auth.principal
         if (user is UserPrincipal) {
+            addAttribute("username", user.username)
             addAttribute("fio", user.fio)
             addAttribute("admin", user.isAdmin())
         }

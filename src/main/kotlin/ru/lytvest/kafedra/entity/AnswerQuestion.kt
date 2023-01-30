@@ -1,6 +1,11 @@
 package ru.lytvest.kafedra.entity
 
-import jakarta.persistence.*
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
+import jakarta.persistence.ManyToOne
+import ru.lytvest.kafedra.dto.AnswerDto
 import java.time.LocalDateTime
 
 @Entity
@@ -19,7 +24,9 @@ class AnswerQuestion {
     @ManyToOne
     lateinit var question: Question
 
-    val count: Int = 0
+    var count: Int = 0
 
     var dateTime: LocalDateTime = LocalDateTime.now()
+
+    fun toDto() = AnswerDto(id!!, count, student.fio, examiner.fio, question.text)
 }
