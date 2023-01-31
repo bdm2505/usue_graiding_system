@@ -3,7 +3,7 @@
 <style>
 
     .show-error {
-        border: 1px solid #ef2929;
+        border: 1px solid #ff9898;
         background-color: #ff9898;
         color: #7a0505;
     }
@@ -20,8 +20,13 @@
 {{#student}}
 
 <div class="container m-2">
+    {{#group}}
+    <div class="alert alert-primary mt-4" role="alert">
+        Текущая группа : {{name}}
+    </div>
+    {{/group}}
 
-    <div class="alert alert-primary" role="alert">
+    <div class="alert alert-primary mt-2" role="alert">
         Текущий студент : {{name}}
     </div>
 
@@ -38,58 +43,17 @@
         <div class="card m-2">
             <div class="card-body">
                 <p class="card-text">{{text}}</p>
-                <div class="btn-group btn-group-sm" role="group">
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-1" autocomplete="off"
-                           value="1" required
-                           oninvalid="document.getElementById('label-{{id}}-1').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-1" id="label-{{id}}-1">1</label>
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-2" autocomplete="off"
-                           value="2" required
-                           oninvalid="document.getElementById('label-{{id}}-2').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-2" id="label-{{id}}-2">2</label>
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-3" autocomplete="off"
-                           value="3" required
-                           oninvalid="document.getElementById('label-{{id}}-3').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-3" id="label-{{id}}-3">3</label>
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-4" autocomplete="off"
-                           value="4" required
-                           oninvalid="document.getElementById('label-{{id}}-4').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-4" id="label-{{id}}-4">4</label>
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-5" autocomplete="off"
-                           value="5" required
-                           oninvalid="document.getElementById('label-{{id}}-5').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-5" id="label-{{id}}-5">5</label>
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-6" autocomplete="off"
-                           value="6" required
-                           oninvalid="document.getElementById('label-{{id}}-6').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-6" id="label-{{id}}-6">6</label>
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-7" autocomplete="off"
-                           value="7" required
-                           oninvalid="document.getElementById('label-{{id}}-7').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-7" id="label-{{id}}-7">7</label>
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-8" autocomplete="off"
-                           value="8" required
-                           oninvalid="document.getElementById('label-{{id}}-8').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-8" id="label-{{id}}-8">8</label>
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-9" autocomplete="off"
-                           value="9" required
-                           oninvalid="document.getElementById('label-{{id}}-9').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-9" id="label-{{id}}-9">9</label>
-                    <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-10" autocomplete="off"
-                           value="10" required
-                           oninvalid="document.getElementById('label-{{id}}-10').classList.add('show-error')"
-                           oninput="closeErrors('label-{{id}}-')">
-                    <label class="btn btn-outline-primary" for="quest-{{id}}-10" id="label-{{id}}-10">10</label>
-                </div>
+
+                {{#options}}
+                <input type="radio" class="btn-check" name="quest-{{id}}" id="quest-{{id}}-{{index}}" autocomplete="off"
+                       value="{{index}}" required
+                       oninvalid="document.getElementById('label-{{id}}-{{index}}').classList.add('show-error')"
+                       oninput="closeErrors('label-{{id}}-')">
+                <label class="btn quest-label-button btn-sm mb-1" for="quest-{{id}}-{{index}}"
+                       id="label-{{id}}-{{index}}">{{index}}</label>
+                {{/options}}
+
+
             </div>
         </div>
 

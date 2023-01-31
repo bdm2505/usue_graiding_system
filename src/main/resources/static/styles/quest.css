@@ -1,0 +1,18 @@
+
+.btn-sm {
+    --bs-btn-padding-y: 0.1rem;
+    --bs-btn-border-radius: 0.5rem;
+}
+
+.quest-label-button {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #0060AA;
+    --bs-btn-border-color: #0060AA;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #006abb;
+    --bs-btn-hover-border-color: #006abb;
+    --bs-btn-active-color: #0060AA;
+    --bs-btn-active-bg: #C3DAFF;
+    --bs-btn-active-border-color: #C3DAFF;
+    box-shadow: 0px 4px 4px #b5b5b5;
+}

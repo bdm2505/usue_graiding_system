@@ -5,13 +5,7 @@ import jakarta.servlet.http.HttpSession
 import org.springframework.stereotype.Service
 import ru.lytvest.kafedra.dto.AnswerDto
 import ru.lytvest.kafedra.dto.QuestionDto
-import ru.lytvest.kafedra.entity.AnswerQuestion
-import ru.lytvest.kafedra.entity.Comment
-import ru.lytvest.kafedra.entity.Exam
-import ru.lytvest.kafedra.entity.Examiner
-import ru.lytvest.kafedra.entity.Question
-import ru.lytvest.kafedra.entity.Student
-import ru.lytvest.kafedra.entity.User
+import ru.lytvest.kafedra.entity.*
 import ru.lytvest.kafedra.repository.AnswerQuestionRepository
 import ru.lytvest.kafedra.repository.CommentRepository
 import ru.lytvest.kafedra.repository.QuestionRepository
@@ -29,8 +23,10 @@ class QuestionService(
 
         for (i in 1..10) {
             Question().apply {
-                text =
-                    "Вопрос $i о том как надо жарить рыбу (1 до 10)" + "Вопрос $i о том как надо жарить рыбу (1 до 10)" + "Вопрос $i о том как надо жарить рыбу (1 до 10)"
+                text = if (i % 2 == 0)
+                    "Вопрос $i о том как надо жарить рыбу (1 до 10)"
+                else
+                    "Вопрос $i о том как не надо прыгать из парашута в грозу (1 до 10)"
                 questionRepository.save(this)
             }
         }

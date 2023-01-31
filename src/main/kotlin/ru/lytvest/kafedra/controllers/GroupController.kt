@@ -1,5 +1,6 @@
 package ru.lytvest.kafedra.controllers
 
+import jakarta.servlet.http.HttpSession
 import mu.KotlinLogging
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Controller
@@ -10,7 +11,8 @@ import ru.lytvest.kafedra.service.GroupService
 
 @Controller
 class GroupController(
-    val groupService: GroupService
+        val groupService: GroupService,
+        val session: HttpSession
 ) {
 
     val log = KotlinLogging.logger {}

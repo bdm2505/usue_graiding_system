@@ -22,8 +22,9 @@ class GroupService(
             for (j in 1..4) {
                 try {
                     addGroup("ИВТ-$i-$j").apply {
-                        students.add(Student().apply { fio = "Дмитрий" })
-                        students.add(Student().apply { fio = "Дмитрий Михалыч" })
+                        val gr = this
+                        students.add(Student().apply { fio = "Дмитрий"; group = gr })
+                        students.add(Student().apply { fio = "Дмитрий Михалыч"; group = gr })
                         groupRepository.save(this)
                     }
                 } catch (e: Exception) {

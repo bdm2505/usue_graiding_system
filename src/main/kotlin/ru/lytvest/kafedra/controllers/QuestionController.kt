@@ -29,11 +29,14 @@ class QuestionController(
         model.addUserData(authentication)
 
         val student = studentId?.let { studentsService.findById(studentId) }
-            ?: session.getAttribute("student") as Student?
-            ?: return "redirect:/groups"
+                ?: session.getAttribute("student") as Student?
+                ?: return "redirect:/groups"
 
         session.setAttribute("student", student)
+
         model.addAttribute("student", student.toDto())
+        model.addAttribute("group", student.group.toDto())
+        model.addAttribute("options", (1..10).map { A(it) })
 
         model.addAttribute("questions", questionService.allQuestionsDto())
 
@@ -72,3 +75,5 @@ class QuestionController(
         return "save_answer"
     }
 }
+
+data class A(val index: Int)
