@@ -32,3 +32,9 @@ html * {
 .hover-gray:hover {
     background-color: #BABABA;
 }
+
+.rect-check-box {
+    min-height: 23px;
+    min-width: 23px;
+    background-color: #0060AA;
+}
